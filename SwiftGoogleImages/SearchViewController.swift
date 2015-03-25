@@ -118,7 +118,9 @@ class SearchViewModel {
 	init() {
 		searchAction = Action { input in
 			let queryString = input.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
-			let searchURL = NSURL(string: "https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=\(queryString)&userip=68.174.66.0&rsz=8")!
+			// TODO: add your IP address here http://whatismyip.com yes I'm that lazy
+			let myIP: String = nil
+			let searchURL = NSURL(string: "https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=\(queryString)&userip=\(myIP)&rsz=8")!
 			let request = NSMutableURLRequest(URL: searchURL)
 			request.setValue("http://myToyApp.com", forHTTPHeaderField: "Referer")
 			return NSURLSession.sharedSession().rac_dataWithRequest(request)
