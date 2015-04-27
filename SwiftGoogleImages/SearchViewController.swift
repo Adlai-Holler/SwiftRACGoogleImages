@@ -14,7 +14,11 @@ class SearchViewController: UICollectionViewController {
 		flow.minimumInteritemSpacing = padding
 		flow.minimumLineSpacing = padding
 		textField = UITextField(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
-		super.init(collectionViewLayout: flow)
+        textField.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+        textField.placeholder = "Google Image Search"
+        textField.textAlignment = .Center
+
+        super.init(collectionViewLayout: flow)
 
 		navigationItem.titleView = textField
 		(textSignal(textField)
@@ -67,13 +71,7 @@ class SearchViewController: UICollectionViewController {
 		let nilThenImageUntilReuse = SignalProducer<AnyObject?, NoError>(value: nil)
 			|> concat(imageUntilReuse |> map { $0 as AnyObject? })
 	
-		// TODO: why doesn't this work?
-//		DynamicProperty(object: cell.imageView, keyPath: "image") <~ nilThenImageUntilReuse
-		
-		// manually bind to property works
-		nilThenImageUntilReuse.start(next: { imageOrNil in
-			cell.imageView.image = imageOrNil as! UIImage?
-		})
+		DynamicProperty(object: cell.imageView, keyPath: "image") <~ nilThenImageUntilReuse
 		return cell
 	}
 }
