@@ -16,6 +16,8 @@
 		CC66DBC51AB517E200814725 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC66DBC41AB517E200814725 /* Images.xcassets */; };
 		CC66DBC81AB517E200814725 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC66DBC61AB517E200814725 /* LaunchScreen.xib */; };
 		CC66DBD41AB517E300814725 /* SwiftGoogleImagesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC66DBD31AB517E300814725 /* SwiftGoogleImagesTests.swift */; };
+		CCB2A8371AF5B0AD00302C2D /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB2A8361AF5B0AD00302C2D /* SearchViewModel.swift */; };
+		CCB2A8391AF5B15800302C2D /* RACUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB2A8381AF5B15800302C2D /* RACUtilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		CC66DBCD1AB517E300814725 /* SwiftGoogleImagesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftGoogleImagesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC66DBD21AB517E300814725 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC66DBD31AB517E300814725 /* SwiftGoogleImagesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftGoogleImagesTests.swift; sourceTree = "<group>"; };
+		CCB2A8361AF5B0AD00302C2D /* SearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		CCB2A8381AF5B15800302C2D /* RACUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACUtilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +113,9 @@
 			children = (
 				CC4455261AB51965009C9529 /* Frameworks */,
 				CC66DBBD1AB517E200814725 /* AppDelegate.swift */,
+				CCB2A8361AF5B0AD00302C2D /* SearchViewModel.swift */,
 				CC66DBBF1AB517E200814725 /* SearchViewController.swift */,
+				CCB2A8381AF5B15800302C2D /* RACUtilities.swift */,
 				CC66DBC41AB517E200814725 /* Images.xcassets */,
 				CC66DBC61AB517E200814725 /* LaunchScreen.xib */,
 				CC66DBBB1AB517E200814725 /* Supporting Files */,
@@ -242,8 +248,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCB2A8371AF5B0AD00302C2D /* SearchViewModel.swift in Sources */,
 				CC66DBC01AB517E200814725 /* SearchViewController.swift in Sources */,
 				CC66DBBE1AB517E200814725 /* AppDelegate.swift in Sources */,
+				CCB2A8391AF5B15800302C2D /* RACUtilities.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

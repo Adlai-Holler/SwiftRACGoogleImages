@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>55B84814-D644-4000-8215-87147C1A8136</string>
 	<key>IDESourceControlProjectName</key>
-	<string>SwiftGoogleImages</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>36FBB2A2CD62BABA9F247D79148BEB8BD78C7633</key>
 		<string>https://github.com/adly-holler/SwiftRACGoogleImages</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>SwiftGoogleImages.xcodeproj</string>
+	<string>SwiftGoogleImages.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>36FBB2A2CD62BABA9F247D79148BEB8BD78C7633</key>
@@ -34,7 +34,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>36FBB2A2CD62BABA9F247D79148BEB8BD78C7633</string>
 			<key>IDESourceControlWCCName</key>
-			<string>SwiftGoogleImages</string>
+			<string>SwiftRACGoogleImages</string>
 		</dict>
 	</array>
 </dict>
