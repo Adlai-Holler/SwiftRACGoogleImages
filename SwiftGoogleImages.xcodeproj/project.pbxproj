@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		CC2059631AC22B0C0064FF7F /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC2059611AC22B0C0064FF7F /* ReactiveCocoa.framework */; };
-		CC2059641AC22B930064FF7F /* LlamaKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC2059601AC22B0C0064FF7F /* LlamaKit.framework */; };
-		CC2059651AC22B930064FF7F /* LlamaKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CC2059601AC22B0C0064FF7F /* LlamaKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CC2059671AC22B930064FF7F /* ReactiveCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CC2059611AC22B0C0064FF7F /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CC235DA81BE028BE002F7876 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC235DA71BE028BE002F7876 /* Result.framework */; };
+		CC235DA91BE028BE002F7876 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC235DA71BE028BE002F7876 /* Result.framework */; };
+		CC235DAA1BE028D9002F7876 /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CC235DA71BE028BE002F7876 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CC66DBBE1AB517E200814725 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC66DBBD1AB517E200814725 /* AppDelegate.swift */; };
 		CC66DBC01AB517E200814725 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC66DBBF1AB517E200814725 /* SearchViewController.swift */; };
 		CC66DBC51AB517E200814725 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC66DBC41AB517E200814725 /* Images.xcassets */; };
@@ -37,7 +38,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CC2059651AC22B930064FF7F /* LlamaKit.framework in Embed Frameworks */,
+				CC235DAA1BE028D9002F7876 /* Result.framework in Embed Frameworks */,
 				CC2059671AC22B930064FF7F /* ReactiveCocoa.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -46,8 +47,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		CC2059601AC22B0C0064FF7F /* LlamaKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LlamaKit.framework; path = Carthage/Build/iOS/LlamaKit.framework; sourceTree = SOURCE_ROOT; };
 		CC2059611AC22B0C0064FF7F /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = SOURCE_ROOT; };
+		CC235DA71BE028BE002F7876 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = SOURCE_ROOT; };
 		CC66DBB81AB517E200814725 /* SwiftGoogleImages.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftGoogleImages.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC66DBBC1AB517E200814725 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC66DBBD1AB517E200814725 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -67,7 +68,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC2059631AC22B0C0064FF7F /* ReactiveCocoa.framework in Frameworks */,
-				CC2059641AC22B930064FF7F /* LlamaKit.framework in Frameworks */,
+				CC235DA81BE028BE002F7876 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC235DA91BE028BE002F7876 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,7 +86,7 @@
 		CC4455261AB51965009C9529 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CC2059601AC22B0C0064FF7F /* LlamaKit.framework */,
+				CC235DA71BE028BE002F7876 /* Result.framework */,
 				CC2059611AC22B0C0064FF7F /* ReactiveCocoa.framework */,
 			);
 			name = Frameworks;
@@ -193,6 +195,7 @@
 		CC66DBB01AB517E200814725 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = adly;
 				TargetAttributes = {
@@ -403,6 +406,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -422,6 +426,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = SwiftGoogleImagesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

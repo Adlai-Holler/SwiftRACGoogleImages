@@ -17,8 +17,8 @@ class SearchViewModel {
         let url: NSURL
         let imageID: String
         init(dictionary: [String: String]) {
-            thumbSize = CGSize(width: dictionary["tbWidth"]!.toInt()!, height: dictionary["tbHeight"]!.toInt()!)
-            size = CGSize(width: dictionary["width"]!.toInt()!, height: dictionary["height"]!.toInt()!)
+            thumbSize = CGSize(width: Int(dictionary["tbWidth"]!)!, height: Int(dictionary["tbHeight"]!)!)
+            size = CGSize(width: Int(dictionary["width"]!)!, height: Int(dictionary["height"]!)!)
             imageID = dictionary["imageId"]!
             thumbURL = NSURL(string: dictionary["tbUrl"]!)!
             visibleURL = dictionary["visibleUrl"]!
@@ -36,7 +36,7 @@ class SearchViewModel {
     }
     
     let searchAction: Action<String, Response, NSError>
-    let latestResults: PropertyOf<[Result]>
+    let latestResults: AnyProperty<[Result]>
     init() {
         searchAction = Action { input in
             let queryString = input.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
@@ -46,9 +46,9 @@ class SearchViewModel {
             let request = NSMutableURLRequest(URL: searchURL)
             request.setValue("http://myToyApp.com", forHTTPHeaderField: "Referer")
             return NSURLSession.sharedSession().rac_dataWithRequest(request)
-                |> map { data, _ in
-                    let dict = NSJSONSerialization.JSONObjectWithData(data, options: .allZeros, error: nil)! as! [String: AnyObject]
-                    println("******\nResponse: \(NSString(data: data, encoding: NSUTF8StringEncoding))")
+                .map { data, _ in
+                    let dict = try! NSJSONSerialization.JSONObjectWithData(data, options: []) as! [String: AnyObject]
+                    print("******\nResponse: \(NSString(data: data, encoding: NSUTF8StringEncoding))")
                     let responseData = (dict["responseData"]! as! [String: AnyObject])
                     let cursorDict = responseData["cursor"]! as! [String: AnyObject]
                     let cursor = Cursor(dictionary: cursorDict)
@@ -58,7 +58,7 @@ class SearchViewModel {
             }
         }
         let _latestResults = MutableProperty<[Result]>([])
-        latestResults = PropertyOf(_latestResults)
-        _latestResults <~ (searchAction.values |> map { $0.results } |> observeOn(UIScheduler()))
+        latestResults = AnyProperty(_latestResults)
+        _latestResults <~ (searchAction.values .map { $0.results } .observeOn(UIScheduler()))
     }
 }

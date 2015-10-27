@@ -22,10 +22,10 @@ class SearchViewController: UICollectionViewController {
 
 		navigationItem.titleView = textField
 		(textSignal(textField)
-			|> throttle(1, onScheduler: QueueScheduler()))
-			.start(next: {
+			.throttle(1, onScheduler: QueueScheduler()))
+			.startWithNext {
 				self.viewModel.searchAction.apply($0).start()
-			})
+			}
 	}
 
 	required init(coder aDecoder: NSCoder) {
@@ -36,11 +36,11 @@ class SearchViewController: UICollectionViewController {
 		super.viewDidLoad()
 		let collectionView = self.collectionView!
 		(viewModel.latestResults.producer
-			|> takeUntil(deallocSignal(collectionView))
-			|> skip(1))
-			.start(next: {_ in
+			.takeUntil(deallocSignal(collectionView))
+			.skip(1))
+			.startWithNext {_ in
 			collectionView.reloadData()
-		})
+		}
 		
 		collectionView.backgroundColor = UIColor.whiteColor()
 		collectionView.alwaysBounceVertical = true
@@ -57,19 +57,19 @@ class SearchViewController: UICollectionViewController {
 		
 		let item = viewModel.latestResults.value[indexPath.item]
 		let imageProducer = NSURLSession.sharedSession().rac_dataWithRequest(NSURLRequest(URL: item.thumbURL))
-			|> map {data, _ in UIImage(data: data)! }
-			|> catch {_ in SignalProducer<UIImage, NoError>(value: UIImage()) }
+			.map {data, _ in UIImage(data: data)! }
+			.flatMapError {_ in SignalProducer<UIImage, NoError>(value: UIImage()) }
 		
 		let prepForReuse = cell.rac_prepareForReuseSignal.toSignalProducer()
-			|> map {_ in () }
-			|> catch {_ in SignalProducer<(), NoError>.empty }
+			.map {_ in () }
+			.flatMapError {_ in SignalProducer<(), NoError>.empty }
 		
 		let imageUntilReuse = imageProducer
-			|> takeUntil(prepForReuse)
-			|> observeOn(UIScheduler())
+			.takeUntil(prepForReuse)
+			.observeOn(UIScheduler())
 
 		let nilThenImageUntilReuse = SignalProducer<AnyObject?, NoError>(value: nil)
-			|> concat(imageUntilReuse |> map { $0 as AnyObject? })
+			.concat(imageUntilReuse .map { $0 as AnyObject? })
 	
 		DynamicProperty(object: cell.imageView, keyPath: "image") <~ nilThenImageUntilReuse
 		return cell
